@@ -26,15 +26,29 @@ function init() {
     refreshDisplay();
 }
 
-function refreshDisplay() {
-    if (Math.ceil(remaining / 60) != timer.innerHTML) {
+function refreshDisplay(force) {
+    var body = document.getElementById('body');
+    if ((Math.ceil(remaining / 60) != timer.innerHTML) || force) {
         timer.innerHTML = Math.ceil(remaining / 60);
+        if (timer.className == "paused") {
+            if (body.className == "light") {
+                document.title = ("Paused Break - " + Math.ceil(remaining / 60) + "m - Pomodoro Timer");
+            } else if (body.className == "dark") {
+                document.title = ("Paused Work - " + Math.ceil(remaining / 60) + "m - Pomodoro Timer");
+            }
+        } else if (timer.className == "") {
+            if (body.className == "light") {
+                document.title = ("Break - " + Math.ceil(remaining / 60) + "m - Pomodoro Timer");
+            } else if (body.className == "dark") {
+                document.title = ("Working - " + Math.ceil(remaining / 60) + "m - Pomodoro Timer");
+            }
+        }
     }
 }
 
 function addOne() {
     remaining = remaining + 60;
-    refreshDisplay();
+    refreshDisplay(true);
 }
 
 function toggleWork() {
@@ -45,7 +59,7 @@ function toggleWork() {
         setTimeout(function () {
             document.getElementById('state-icon').innerHTML = "beach_access";
             remaining = work * 60;
-            refreshDisplay();
+            refreshDisplay(true);
         }, 150);
     } else { // Dark = working, change to rest
         body.className = "light";
@@ -53,7 +67,7 @@ function toggleWork() {
         setTimeout(function () {
             document.getElementById('state-icon').innerHTML = "laptop";
             remaining = rest * 60;
-            refreshDisplay();
+            refreshDisplay(true);
         }, 150);
     }
 }
@@ -64,12 +78,12 @@ function toggleTimer() {
         document.getElementById('play-icon').className = "material-icons transition-spin";
         setTimeout(function () {
             document.getElementById('play-icon').innerHTML = "pause";
-            refreshDisplay();
+            refreshDisplay(true);
         }, 150);
         pid = setInterval(function () {
             remaining = remaining - 1;
             refreshDisplay();
-            if (remaining == 0) {
+            if (remaining <= 0) {
                 toggleWork();
             }
         }, 1000);
@@ -78,7 +92,7 @@ function toggleTimer() {
         document.getElementById('play-icon').className = "material-icons";
         setTimeout(function () {
             document.getElementById('play-icon').innerHTML = "play_arrow";
-            refreshDisplay();
+            refreshDisplay(true);
         }, 150);
         clearInterval(pid);
     }
