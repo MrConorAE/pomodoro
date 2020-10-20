@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomodoro Timer</title>
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="script.js"></script>
+    </head>
+
+    <body class="dark" id="body">
+        <!--<div id="bubble"></div>-->
+        <p id="minutes" class="paused">0</p>
+        <div id="control">
+            <button id="add-one" onclick="addOne()"><i class="material-icons">plus_one</i></button>
+            <button id="start-stop" onclick="toggleTimer()"><i class="material-icons"
+                    id="play-icon">play_arrow</i></button>
+            <button id="work-play" onclick="toggleWork()"><i class="material-icons" id="state-icon">beach_access</i>
+        </div>
+    </body>
+
+</html>

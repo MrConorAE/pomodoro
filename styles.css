@@ -1,0 +1,109 @@
+:root {
+    font-family: "Roboto Mono";
+    transition: all 0.3s ease-in-out;
+}
+
+body {
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    margin: 0;
+}
+
+body.light {
+    background-color: white;
+    color: black;
+}
+
+body.dark {
+    background-color: black;
+    color: white;
+}
+
+#minutes {
+    font-size: 200px;
+    font-weight: 100;
+    line-height: 100vh;
+    height: 100vh;
+    margin: 0;
+}
+
+#minutes.paused {
+    animation: pause 3s infinite ease-in-out forwards;
+}
+
+@keyframes pause {
+    0% {
+        opacity: 100%;
+    }
+
+    50% {
+        opacity: 25%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+/*#bubble {
+    background-color: red;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    clip-path: circle(100px);
+}*/
+
+#control {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+}
+
+body button {
+    transition: all 0.3s ease-in-out;
+    border-radius: 50px 50px 0 0;
+    border: none;
+    height: 70px;
+    width: 50px;
+    position: relative;
+    bottom: -15px;
+}
+
+.material-icons {
+    transition: 0.3s all ease-in-out;
+    transform: rotateY(0deg);
+}
+
+.material-icons.transition-spin {
+    transform: rotateY(180deg);
+}
+
+body button:hover {
+    bottom: 0;
+}
+
+body.light button {
+    background-color: transparent;
+    color: black;
+}
+
+body.light button:hover {
+    background-color: black;
+    color: white;
+}
+
+body.dark button {
+    background-color: transparent;
+    color: white;
+}
+
+body.dark button:hover {
+    background-color: white;
+    color: black;
+}
