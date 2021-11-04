@@ -28,7 +28,7 @@ body.dark {
 }
 
 #minutes.paused {
-    animation: pause 3s infinite ease-in-out forwards;
+    animation: pause 2s infinite ease-in-out forwards;
 }
 
 @keyframes pause {

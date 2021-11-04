@@ -7,23 +7,24 @@ var pid = 0;
 function init() {
     timer = document.getElementById('minutes');
     while (true) {
-        work = prompt("Work period (min.):");
+        work = prompt("Welcome!\nHow long do you want to work for (in minutes)?\n(Recommended: 30)");
         if (isNaN(Number(work))) {
-            work = prompt("Please enter a number.\nWork period (min.):");
+            work = prompt("Please enter a number.\nWork length (min.):");
         } else {
             break;
         }
     }
     while (true) {
-        rest = prompt("Rest period (min.):");
+        rest = prompt("...and how long do you want your breaks to be after working for " + work + "min (in minutes)?\n(Recommended: 10):");
         if (isNaN(Number(work))) {
-            rest = prompt("Please enter a number.\nRest period (min.):");
+            rest = prompt("Please enter a number.\nRest length (min.):");
         } else {
             break;
         }
     }
     remaining = work * 60;
     refreshDisplay();
+    alert("Done! You'll work for " + work + "min and rest for " + rest + "min.\n\nTo start, press the Play button at the bottom.\n- When the screen is BLACK, do work.\n- When it turns WHITE, take a break.\n- The number is how many minutes are left in this chunk.\n- Press +1 to add a minute.\n- Press the laptop/umbrella image to switch to work or break immediately.\n\nEnjoy!");
 }
 
 function refreshDisplay(force) {
